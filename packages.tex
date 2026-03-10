@@ -1,0 +1,113 @@
+\usepackage{array}
+\usepackage{amssymb,amsfonts}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{braket}
+\usepackage{tcolorbox}
+\usepackage{xparse}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{makecell}
+\usepackage{tikz-feynman}
+\usepackage{slashed}
+\usepackage{cancel}
+\usepackage{geometry}
+% \usepackage{feynmp-auto}
+\usepackage{diagbox} % 用于在表格单元格画斜线
+\makeatletter
+\def\input@path{{./texmf/}}
+\makeatother
+\usepackage{tikz-feynman}
+\tikzfeynmanset{compat=1.1.0} % 推荐设置兼容性版本
+
+% 定义通用的样式设置，减少重复代码
+\tikzfeynmanset{
+    my_diagram/.style={
+        small, 
+        inline=(a.center), 
+        % baseline=-0.5ex, % 垂直居中对齐
+        horizontal=a to b,
+        dot, % <-- 添加这一行：将所有顶点渲染为实心黑点
+        % /tikz/dot/minimum size=4pt, % 可选：调整点的大小 (默认值通常是 4pt 左右)
+    }
+}
+\tikzset{
+    scalar arrow/.style={
+        dashed, % 虚线
+        postaction={decorate}, % 允许装饰
+        decoration={
+            markings,
+            % 使用实心的 'stealth' 箭头，并设置其长度和宽度
+            mark=at position 0.5 with {\arrow[scale=1.5]{Stealth}} 
+            % 或者使用更通用的 latex 箭头并加大 scale:
+            % mark=at position 0.5 with {\arrow[scale=1.5]{latex}} 
+        }
+    }
+}
+\tikzset{
+    % 定义动量箭头样式
+    my momentum arrow/.style={
+        % 使用 postaction 来在线条绘制完成后再执行一个动作
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position 0.5 with {\arrow{>}}, % 在中点放置一个箭头
+            },
+        },
+        draw=none, % 不绘制线本身，只绘制箭头
+    },
+    % 动量标签位置调整
+    momentum label/.style={
+        sloped, % 让标签与路径平行
+        above,  % 标签在线的上方
+        yshift=2mm, % 垂直微调
+    }
+}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{bending}
+
+% 定义重要结论环境
+\newtcolorbox{important}{
+    colback=white,    % 背景色
+    colframe=black,   % 边框色
+    sharp corners,    % 直角
+    boxrule=1.5pt,    % 边框粗细
+    coltitle=black
+}
+
+\numberwithin{equation}{subsection}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\newcommand{\de}[2]{\frac{\mathrm d#1}{\mathrm d#2}}
+\newcommand{\pa}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\delt}[2]{\frac{\delta #1}{\delta #2}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\rm}[1]{\mathrm{#1}}
+\renewcommand{\bf}[1]{\mathbf{#1}}
+\renewcommand{\exp}[1]{\mathrm e^{#1}}
+\newcommand{\ddd}[1]{\frac{\mathrm d^3#1}{(2\pi)^3}}
+\newcommand{\dddd}[1]{\frac{\mathrm d^4#1}{(2\pi)^4}}
+\renewcommand{\a}[1]{a_{\vec #1}}
+\renewcommand{\b}[1]{b_{\vec #1}}
+\newcommand{\om}[1]{\omega_{\vec #1}}
+\newcommand{\ad}[1]{a^\dagger_{\vec #1}}
+\renewcommand{\d}{\mathrm d}
+\newcommand{\dx}{\mathrm dx}
+\newcommand{\dy}{\mathrm dy}
+\newcommand{\dz}{\mathrm dz}
+\newcommand{\dw}{\mathrm dw}
+\newcommand{\dt}{\mathrm dt}
+% \renewcommand{\dp}{\mathrm dp}
+\newcommand{\dpi}[1]{(2\pi)^{#1}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\uvec}[1]{\mathbf{\hat{#1}}}
+\newcommand{\e}{\mathrm e}
+\newcommand{\tensor}[1]{\overleftrightarrow{\vec{#1}}}
+\NewDocumentCommand{\ld}{m O{1}}{\frac{\mathrm d^3#1}{(2\pi)^3}\frac{#2}{2\omega_{\vec #1}}}
+\NewDocumentCommand{\ldsq}{m O{1}}{\frac{\mathrm d^3#1}{(2\pi)^3}\frac{#2}{\sqrt{2\omega_{\vec #1}}}}
+\NewDocumentCommand{\lips}{m O{1}}{\frac{\mathrm d^3#1}{(2\pi)^3}\frac{#2}{2\omega_{\vec #1}}}
+\newcommand{\expr}[1]{式\eqref{#1}}

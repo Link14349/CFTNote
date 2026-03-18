@@ -1,0 +1,430 @@
+\section{绪论}
+\subsection{Why CFT?}
+\begin{enumerate}
+    \item CFT can emerge in "critical" phen: Ising model.
+    \item Important to understand quantum gravity through string theory, AdS/CFT.
+    \item CFT is truly formulated QFT non-perturbatively: Operator Algebra.
+    \item CFT appears as fixed points of RG flow.
+\end{enumerate}
+\subsection{符号约定}
+欧式空间度规为$\diag(1\cdots1)$, Lorentz空间度规为$\diag(1, -1, \cdots-1)$.
+\begin{definition}[Riemann曲率张量]
+    \begin{align}
+        R_{abc}^{~~~~d}\equiv2\nabla_{[a}\nabla_{b]}\omega_c.
+    \end{align}
+\end{definition}
+\begin{definition}[Ricci张量]
+    \begin{align}
+        R_{ac}\equiv R_{adc}^{~~~~d}=2\nabla_{[a}\nabla_{b]}\omega_c.
+    \end{align}
+\end{definition}
+\begin{definition}[Einstein场张量]
+    \begin{align}
+        G_{ab}=R_{ab}-\frac12 Rg_{ab}.
+    \end{align}
+\end{definition}
+\begin{definition}[标量曲率]
+    \begin{align}
+        R=g^{ab}R_{ab}.
+    \end{align}
+\end{definition}
+\begin{definition}[体元测度]
+    \begin{align}
+        \epsilon=\sqrt{g}\d x^1\wedge\cdots\d x^d.
+    \end{align}
+    其中$g$为$g_{\mu\nu}$的行列式.
+\end{definition}
+
+Einstein-Hilbert作用量
+\begin{align}
+    S=S_{\rm{gravity}}+S_{\rm{matter}}=\int\left(-\frac{R}{16\pi}+\mathcal L_{\rm{matter}}\right).
+\end{align}
+
+Einstien引力场方程
+\begin{align}
+    G_{ab}=8\pi T_{ab}.
+\end{align}
+\begin{theorem}[物质场能动张量]\label{stress-tensor}
+    \begin{align}
+        T_{ab}=\frac{2}{\sqrt{-g}}\frac{\delta S_{\rm{matter}}}{\delta g^{ab}}
+    \end{align}
+\end{theorem}
+
+\newpage
+\section{共形变换}
+\subsection{时空的共形变换}
+考虑一个$d$维时空流形$M$上的单参微分同胚群, 其对应的光滑矢量场为$\xi^a$, 时空度规$g_{ab}$(未指定号差, 可以Lorentz也可以Eucilidean)在其下的Lie导数为
+\begin{align}
+    \mathscr L_\xi g_{ab}=\xi^c\nabla_c g\omega_{ab}+g_{ac}\nabla_b\xi^c+g_{cb}\nabla_a\xi^c=\nabla_b\xi_a+\nabla_a\xi_b.
+\end{align}
+
+若保持时空度规不变, 即等距群, 则$\xi^a$满足
+\begin{align}
+    \nabla_{(a}\xi_{b)}=0.
+\end{align}
+即$\xi^a$为Killing矢量场.
+
+在Minkovski时空中, 
+\begin{align}
+    g_{\mu\nu}=\rm{diag}(\pm1), 
+\end{align}
+容易解得Killing矢量场为
+\begin{align}
+    \xi^\mu=a^\mu+\omega^\mu_{~\nu}x^\nu,
+\end{align}
+其中
+\begin{align}
+    \omega_{\mu\nu}=\omega_{[\mu\nu]}.
+\end{align}
+这就是Poincare群, 总共有三部分组成: 平移、旋转、Boost.
+
+\begin{definition}[Weyl变换]
+    变换
+    \begin{align}
+        g_{ab}\to \Omega(x)^2g_{ab}
+    \end{align}
+    称为Weyl变换.
+\end{definition}
+
+如果我们放宽条件, 允许变换后的度规可以存在缩放, 即
+\begin{align}
+    g_{\mu\nu}'=g_{\mu\nu}-\mathscr L_\xi g_{\mu\nu}=\Omega^2 g_{\mu\nu}=\exp{-2\sigma}g_{\mu\nu}\approx(1-2\sigma)g_{\mu\nu}
+\end{align}
+这就是共形变换. 不难发现, 从几何意义上说, 其实共性变换对称也就是保角变换. 或者说, 
+\begin{definition}[共形变换]
+    同时是微分同胚的Weyl变换为共形变换.
+\end{definition}
+
+若$\sigma$为常数$\lambda$, 则我们有
+\begin{align}
+    \partial_{(\mu}\xi_{\nu)}=\lambda g_{\mu\nu},
+\end{align}
+可以解得其解为通解+特解:
+\begin{align}
+    \xi^\mu=a^\mu+\omega^\mu_{~\nu}x^\nu+\lambda x^\mu.
+\end{align}
+
+如果再放宽条件, 我们让$\sigma=\sigma(x)$, 和坐标有关, 则
+\begin{theorem}[共形Killing方程]
+    \begin{align}
+        \partial_{(\mu}\xi_{\nu)}=\sigma g_{\mu\nu}\label{sp-c-eq}
+    \end{align}
+\end{theorem}
+将\expr{sp-c-eq}与$g_{\mu\nu}$缩并我们有
+\begin{align}
+    \partial_\mu\xi^\mu=d\sigma.\label{div-killing}
+\end{align}
+将\expr{sp-c-eq}与$\partial_\mu$缩并我们有
+\begin{align}
+    \Box\xi_\nu+\partial_\nu\partial_\mu\xi^\mu=\Box\xi_\nu+d\partial_\nu\sigma=2\partial_\nu\sigma,
+\end{align}
+即
+\begin{align}
+    \Box\xi_\nu=(2-d)\partial_\nu\sigma\label{sp-c-eq2}.
+\end{align}
+进一步将\expr{sp-c-eq2}与$\partial_\nu$缩并, 我们有
+\begin{align}
+    \Box(d\sigma)=(2-d)\Box\sigma
+\end{align}
+即
+\begin{align}
+    (1-d)\Box\sigma=0.
+\end{align}
+
+对于$d>1$, 我们有
+\begin{align}
+    \Box\sigma=0.
+\end{align}
+
+我们将$\partial_\mu$作用于\expr{sp-c-eq2}, 有
+\begin{align}
+    \Box\partial_\mu\xi_\nu=(2-d)\partial_\mu\partial_\nu\sigma.
+\end{align}
+同时全称化有, 
+\begin{align}
+    (2-d)\partial_\mu\partial_\nu\sigma=(2-d)\partial_{(\mu}\partial_{\nu)}\sigma=\Box\partial_{(\mu}\xi_{\nu)}=g_{\mu\nu}\Box\sigma=0.
+\end{align}
+即
+\begin{align}
+    (2-d)\partial_\mu\partial_\nu\sigma=0.
+\end{align}
+
+对于$d>2$的情况, 我们有
+\begin{align}
+    \partial_\mu\partial_\nu\sigma=0.
+\end{align}
+可以解得
+\begin{align}
+    \sigma=\lambda+2b_\mu x^\mu, 
+\end{align}
+其中$b_\mu$为某个常矢量. 然后代入求解$\xi^\mu$, 有
+\begin{align}
+    \partial_{(\mu}\xi_{\nu)}=(2b\cdot x+\lambda)g_{\mu\nu}.
+\end{align}
+不难得到其解
+\begin{theorem}[共形Killing矢量场]
+    \begin{align}
+        \xi^\mu=a^\mu+\omega^\mu_{~\nu}x^\nu+\lambda x^\mu+2(b\cdot x)x^\mu-x^2 b^\mu.
+    \end{align}
+\end{theorem}
+这就是共性变换对应的全部矢量场. 某一个特定矢量场定义了流形上的一个单参微分同胚群, 不难验证将这些单参微分同胚群取并集, 仍然具有封闭性、结合律、单位元以及逆元, 因此构成一个群, 即共性变换群.
+
+其中, $a^\mu$代表平移(Translation), $\omega^\mu_{~\nu}$代表旋转(Rotation\&Boost), $\lambda$代表缩放(Dilation), $b^\mu$代表特殊共形变换(Special Conformal Transformation, SCT). 然后我们可以求这些无穷小变换对应的有限大坐标变换的表达式, 即微分方程
+\begin{align}
+    \de{x^\mu}{\tau}=\xi^\mu
+\end{align}
+在$\tau=1$时的解:
+\begin{theorem}[有限大共形变换]
+    \begin{align}
+        &\text{Translation:} x'^\mu=x^\mu+a^\mu,\\
+        &\text{Boost:}  x'^\mu=\Lambda^\mu_{~\nu}x^\nu,\\
+        &\text{Dilation:}  x'^\mu=\exp{\lambda}x^\mu,\\
+        &\text{SCT:} x'^\mu=\frac{x^\mu-x^2b^\mu}{1-2b\cdot x+b^2 x^2}\label{sct-trans}.
+    \end{align}
+\end{theorem}
+
+其中\expr{sct-trans}的得到并不显然, 补充推导如下, 首先有微分方程, 
+\begin{align}
+    \de{x^\mu}{\tau}=2(b\cdot x)x^\mu-x^2b^\mu.
+\end{align}
+与$x^\mu$缩并我们有
+\begin{align}
+    \de{x^2}{\tau}=2(b\cdot x)x^2.
+\end{align}
+设
+\begin{align}
+    y^\mu=\frac{x^\mu}{x^2}, 
+\end{align}
+有
+\begin{align}
+    \de{y^\mu}{\tau}=-b^\mu
+\end{align}
+于是可得
+\begin{align}
+    \frac{x'^\mu}{x'^2}=\frac{x^\mu}{x^2}-b^\mu.
+\end{align}
+由此可见, SCT可以将其视为三个步骤: 以原点为中心内外翻转, 平移$-b^\mu$, 以原点为中心内外翻转. 最终化简我们有
+\begin{align}
+    x'^\mu=\frac{x^\mu-x^2b^\mu}{1-2b\cdot x+b^2 x^2}.
+\end{align}
+于是我们发现几个特殊点:
+\begin{align}
+    \begin{cases}
+        & \text{origin}\to\text{origin}\\
+        & \frac{b^\mu}{b^2}\to\infty\\
+        & \infty\to-\frac{b^\mu}{b^2}.
+    \end{cases}
+\end{align}
+
+\begin{theorem}\label{ct-3pt}
+    设任意的六点$x_1, x_2, x_3$与$x_1', x_2', x_3'$, 存在共性变换将$x_1, x_2, x_3$变换为$x_1', x_2', x_3'$.
+\end{theorem}
+\begin{proof}
+    首先利用平移, 可以将$x_1$平移到原点. 然后利用SCT, 可以将$x_2$变换到$\infty$, 这个时候$x_3$位于$x_3''$.
+    
+    类似地我们可以做到将$x_1'$平移到原点, $x_2'$变换到$\infty$, $x_3'$变换到$x_3'''$.
+
+    如果我们对$x_3''$再做一个缩放与旋转, 一定可以将之变换到$x_3'''$. 由共性变换群的封闭性与逆元存在可知, 我们一定可以将$x_1, x_2, x_3$变换到$x_1', x_2', x_3'$.
+\end{proof}
+
+定理\ref{ct-3pt}告诉我们, 在CFT中计算关联函数时, 三点及以下的关联函数都是与点的位置关系没有任何关系的: 我们可以用共性变换将之变成任何形状!
+
+\subsection{共形代数(Conformal Algebra)}
+为了能够计算得到共形代数生成元之间的对易关系, 很自然的想法是我们寻找一个忠实表示, 在这个表示中计算对易子从而得到对易关系. 因此我们选取其对标量场的作用作为表示来考虑, 即我们有映射$G\to(\mathcal F\to\mathcal F)$: 设$g\in G, g=\exp{-i\omega_a K_a}$
+\begin{align}
+    g\to\phi_g, \phi_gf|_{p}\equiv \phi_{*t=1}f|_p.
+\end{align}
+其中, $\phi$对应的光滑矢量场即$\omega_a K_a$.
+
+于是有
+\begin{align}
+    (1-i\epsilon a^\mu p_\mu-\frac i2\epsilon\omega^{\mu\nu}M_{\mu\nu}-i\epsilon\lambda D-i\epsilon b^\mu K_\mu)f(x^\mu)=f(x-\epsilon\xi^\mu).
+\end{align}
+所以可以计算得
+\begin{align}
+    & p_\mu=-i\partial_\mu, \\
+    & M_{\mu\nu}=i(x_\mu\partial_\nu-x_\nu\partial_\mu), \\
+    & D=-ix^\mu\partial_\mu, \\
+    & K_\mu=i(x^2\partial_\mu-2x_\mu x^\nu\partial_\nu).
+\end{align}
+
+然后我们可以计算对易子
+\begin{align}
+    & [M^{\mu\nu}, M^{\rho\sigma}]=i(-g^{\mu\rho}M^{\nu\sigma}-g^{\sigma\nu}M^{\mu\rho}+g^{\mu\sigma}M^{\nu\rho}+g^{\rho\nu}M^{\mu\sigma}),\\
+    & [M_{\mu\nu}, p_\rho]=-i(g_{\mu\rho}p_\nu-g_{\rho\nu}p_\mu),\\
+    & [M_{\mu\nu}, K_\rho]=-i(g_{\mu\rho}K_\nu-g_{\rho\nu}K_\mu),\\
+    & [D, p_\mu]=ip_\mu,\\
+    & [D, K_\mu]=-iK_\mu,\\
+    & [p_\mu, K_\nu]=-2i(M_{\mu\nu}+g_{\mu\nu}D),
+\end{align}
+这就是共形代数.
+
+\begin{theorem}
+    对于旋转对称群$\cong SO(m, n)$的流形, 其共形变换对称群$\cong SO(m+1, n+1)$.
+\end{theorem}
+
+\begin{proof}
+    原本度规为$g_{\mu\nu}$, 设一个新的$m+n+2$维的度规
+    \begin{align}
+        \bar g_{MN}=g_{\mu\nu}\dx^\mu\dx^\nu+\dx^M\dx^M-\dx^N\dx^N,
+    \end{align}
+    其旋转对称群的Lie代数对易满足
+    \begin{align}
+        [L^{\mu\nu}, L^{\rho\sigma}]=i(-g^{\mu\rho}L^{\nu\sigma}-g^{\sigma\nu}L^{\mu\rho}+g^{\mu\sigma}L^{\nu\rho}+g^{\rho\nu}L^{\mu\sigma}).
+    \end{align}
+    如果令
+    \begin{align}
+        \begin{cases}
+            D=L_{MN}=-L^{MN},\\
+            p^\mu=L^{M\mu}+L^{N\mu},\\
+            K^\mu=L^{M\mu}-L^{N\mu},\\
+            M^{\mu\nu}=L^{\mu\nu}.
+        \end{cases}
+    \end{align}
+    则可以使其满足全部的共形代数对易关系!
+\end{proof}
+
+\subsection{经典场的共形变换}
+比较自洽清楚地考虑经典场共形变换的方式是直接在一个一般的流形上面考虑Weyl变换, 将物质与引力场的耦合考虑进去.
+\begin{align}
+    S=\int-\frac{R}{16\pi}+S_{\rm{matter}}
+\end{align}
+其中
+\begin{align}
+    S_{\rm{matter}}=\int\mathcal L.
+\end{align}
+
+因为质量是和标度有关的, 因此只有无质量标量场具有标度不变性, 所以我们只考虑无质量标量场:
+\begin{align}
+    \mathcal L=\frac12g^{ab}\partial_a\phi\partial_b\phi,
+\end{align}
+为了方便计算, 我们在一个特定坐标系中展开, 有
+\begin{align}
+    S_{\rm{matter}}=\int\d^dx\sqrt{-g}\frac12g^{ab}\partial_a\phi\partial_b\phi.
+\end{align}
+
+我们需要首先确定在缩放中$\phi$场的缩放情况, 由于我们要求系统具有共形变换不变性, 因此缩放不应当改变$S$, 为了简单起见, 我们可以考虑全局缩放: $\Omega(x)=\rm{const}$. 这里我们可能会质疑, S差一个任意的常函数都是可以的, 不过显然全局缩放作用只能带来$S$值的缩放, 并不能令$S$多出任何项. 
+
+Weyl变换并不改变坐标, 因此$\d^dx$不变, $\partial_a\phi=d\phi_a$, 微分算子与度规无关因而也不变. 而$g$为$g_{\mu\nu}$的行列式, $g^{ab}$为$g_{ab}$的逆矩阵, 从$g_{ab}\to\Omega^2g_{ab}$有:
+\begin{align}
+    g\to\Omega^{2d}g,\\
+    g^{ab}\to\Omega^{-2}g^{ab}.
+\end{align}
+设$\phi\to\Omega^{-\Delta}\phi$, 根据$S'=S$我们有
+\begin{align}
+    \Omega^{d-2-2\Delta}=1
+\end{align}
+于是有
+\begin{align}
+    \Delta=\frac{d-2}2.
+\end{align}
+这就是$\phi$场的缩放规律.
+
+然后我们考虑局域的Weyl变换$\Omega(x)$依赖于坐标, 考虑$\mathcal L'$的变化, 我们有
+\begin{align}
+    \mathcal L'&=\frac12\Omega^{-2}g^{ab}\partial_a(\Omega^{-\Delta}\phi)\partial_b(\Omega^{-\Delta}\phi)\\
+    &=\frac12\Omega^{-2-2\Delta}(\mathcal L+\frac{d-2}{2}\phi^2\nabla_a\nabla^a\ln\Omega+\frac{(d-2)^2}4\phi^2g^{ab}\partial_a\ln\Omega\partial_b\ln\Omega).
+\end{align}
+由于$\Omega$是局域的, 这导致$\mathcal L'$并不是一个单纯的缩放, 从而导致$S$在Weyl变换下不再是不变的了. 这暗示我们需要添加新的项到$\mathcal L$中, 使它的变换能够刚好抵消掉$\Omega(x)$局域性带来的新项. 
+
+考虑到新项本身需要在全局Weyl变换中与修改前$\mathcal L$的缩放比例是一致的: $\Omega^{-2-2\Delta}$, 因此可以期待, 它一定正比于$g^{ab}\phi^2$. 剩下的任务就是寻找一个在全局Weyl变换下不变的量, 将之与$g^{ab}\phi^2$缩并即可. 很容易发现, 我们手头唯一合适的张量就是Ricci张量. 因此我们不妨设修改后的Lagrangian为
+\begin{align}
+    \mathcal L=\frac12g^{ab}\partial_a\phi\partial_b\phi+\frac12\xi R\phi^2,
+\end{align}
+其中$\xi$为某一个未定无量纲常数.
+
+经过繁琐的计算(具体过程见附录\ref{finite-weyl-transf})我们有
+\begin{align}
+    R'=\Omega^{-2}\left(R-2(d-1)\nabla^a\nabla_a\ln\Omega-(d-1)(d-2)\nabla^a\ln\Omega\nabla_a\ln\Omega\right).
+\end{align}
+
+于是我们有
+\begin{align}
+    \mathcal L'&=\frac12\Omega^{-2-2\Delta}\Bigl\{\mathcal L+\frac{d-2}{2}\phi^2\nabla_a\nabla^a\ln\Omega+\frac{(d-2)^2}4\phi^2g^{ab}\partial_a\ln\Omega\partial_b\ln\Omega\notag\\
+    &\;\;-\xi[2(d-1)\phi^2\nabla_a\nabla^a\ln\Omega+(d-1)(d-2)\phi^2g^{ab}\nabla_a\ln\Omega\nabla_b\ln\Omega]\Bigl\}.
+\end{align}
+对比可得, 若
+\begin{align}
+    \xi=\frac{d-2}{4(d-1)}
+\end{align}
+则可以将含有$\nabla_a\ln\Omega$的项全部消掉, 从而$\mathcal L'=\Omega^{-2-2\Delta}\mathcal L$.
+
+于是我们得出结论, 弯曲时空中的共形标量场Lagrangian为
+\begin{align}
+    \mathcal L=\frac12g^{ab}\partial_a\phi\partial_b\phi+\frac{d-2}{8(d-1)}R\phi^2.
+\end{align}
+
+利用附录\ref{inf-transf}中的结论, 对$S_{\rm{matter}}$变分, 利用定义\ref{stress-tensor}, 我们可以得到能动张量
+\begin{align}
+    T_{ab}=\partial_a\phi\partial_b\phi-\frac12 g_{ab}\partial_a\phi\partial^a\phi-\frac{d-2}{4(d-1)}\left(\nabla_a\nabla_b-g_{ab}\nabla_c\nabla^c\right)\phi^2+\frac{d-2}{8(d-1)}\phi^2G_{ab}.
+\end{align}
+取平直时空极限$G_{ab}=0$, 我们有
+\begin{align}
+    T_{ab}=\partial_a\phi\partial_b\phi-\frac12 g_{ab}\partial_a\phi\partial^a\phi-\frac{d-2}{4(d-1)}\left(\nabla_a\nabla_b-g_{ab}\nabla_c\nabla^c\right)\phi^2.
+\end{align}
+
+考虑平直时空, 将Weyl变换提升为共形变换, 加入对标量场的拉回推出映射, 考虑共形Killing矢量场$\xi^a$生成的无穷小变换, 我们有
+\begin{align}
+    \delta S_{\rm{matter}}=\int\d^dx\sqrt{-g}\left(\omega\nabla_{(a}\xi_{b)}T^{ab}+\pa{\mathcal L}\phi\delta\phi+\Pi^a\partial_a\delta\phi\right).
+\end{align}
+其中$\omega$为无穷小变换参数, 而
+\begin{align}
+    \delta\phi=-\omega\xi^b\partial_b\phi-\frac{\Delta}{d}\partial_a\xi^a\phi, \Pi^a=\pa{\mathcal L}{(\partial_a\phi)}.
+\end{align}
+化简得
+\begin{align}
+    \delta S_{\rm{matter}}=\omega\int\d^dx\sqrt{-g}\partial_a{(a}\xi_{b)}T^{ab}.
+\end{align}
+而代入共形Killing方程, 我们有
+\begin{align}
+    \delta S_{\rm{matter}}=\omega\int\d^dx\sqrt{-g}(2b\cdot x+\lambda)g_{ab}T^{ab}.
+\end{align}
+因此如果要共形变换不改变运动方程, 即$\delta S$, 我们需要满足$g_{ab}T^{ab}=0$, 即能动张量无迹.
+
+代入$T_{ab}$具体形式, 我们不难发现求出来的能动张量确实是无迹的. 从此我们认为能动张量无迹是一默认成立的假设.
+
+\subsection{共形量子场}
+进入量子场, 我们的首要任务是非微扰地定义一个共形量子场. 于是我们可以从如下几点考虑定义
+\begin{enumerate}
+    \item 具有一个Hilbert空间.
+    \item 具有局域的场算符(Local Operator), 即对于类空间隔$x_1, x_2$, 有\begin{align}
+        [\phi(x_1), \phi(x_2)]=0.
+    \end{align}
+    \item 具有共形对称性, 即能动张量不止满足$\partial_\mu T^{\mu\nu}=0$, 同时还满足无迹$T^\mu_{~~\mu}=0$. 并且我们可以在其上定义共形变换各生成元对应的荷算符, 即$D, P_\mu, K_\mu, M_{\mu\nu}$.
+    \item 具有真空态$\ket0$, 并且真空态中因为什么都没有, 具有最高对称性, 因此满足\begin{align}
+        Q\ket0=0.
+    \end{align}其中$Q$为各共形变换对应的荷算符.
+\end{enumerate}
+
+接下来我们就围绕这几点定义进行进一步讨论. 首先对于第三点, 我们可以更进一步地定义共形变换对场算符的变换. 对于某个共形变换荷$G$, 以及参数$\omega$, 我们定义其对场算符的共形变换为
+\begin{align}
+    \phi(x)\to \Lambda_G\phi=\exp{-iG\omega}\phi(x)\exp{iG\omega}.
+\end{align}
+而$\Lambda_G\phi$这个则是直接利用经典场的变换得出的.
+
+\begin{warning}
+    这里和QM教科书上的定义$\exp{iG\omega}\phi(x)\exp{-iG\omega}$是相反的! 请注意! 当然, 这里之所以需要相反是很容易理解的, 因为我们一开始定义共形变换的时候就是对时空坐标沿着Killing矢量移动的, 而不是让场沿着矢量方向移动, 场的移动方向本来就是反的, 现在倒过来定义无非就是把它给正回来了, 这样子定义出来的荷才是就对应场本身的变换生成元.
+\end{warning}
+
+根据平移生成元的定义, 我们有
+\begin{align}
+    \exp{-ip\cdot y}\phi(x)\exp{ip\cdot y}=\phi(x+y).
+\end{align}
+对于无穷小变换$y\to0$, 我们可以得到对易子
+\begin{align}
+    -i[p_\mu, \phi]=\partial_\mu\phi.
+\end{align} 
+于是
+\begin{align}
+    [p_\mu, \phi]=i\partial_\mu\phi.
+\end{align}
+类似地, 利用
+\begin{align}
+    \exp{-\frac i2\omega^{\mu\nu}M_{\mu\nu}}\phi(x)\exp{\frac i2\omega^{\mu\nu}M_{\mu\nu}}=\phi(\Lambda^\mu_{~~\nu}x^\nu), 
+\end{align}
+我们有
+\begin{align}
+    [M_{\mu\nu}, \phi]=-i(x_\mu\partial_\nu-x_\nu\partial_\mu)\phi(x)
+\end{align}
+
+然后我们考虑$D$, Dilation的变换会比较麻烦一些, 因为它同时包含移动与缩放. 比较简单的方式是利用Dilation与SCT不改变原点位置的特性, 首先计算$\phi(0)$与$D, K_\mu$的对易子.

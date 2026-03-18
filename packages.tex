@@ -106,8 +106,24 @@
 \newcommand{\Tr}{\mathrm{Tr}}
 \newcommand{\uvec}[1]{\mathbf{\hat{#1}}}
 \newcommand{\e}{\mathrm e}
+\newcommand{\diag}{\mathrm{diag}}
 \newcommand{\tensor}[1]{\overleftrightarrow{\vec{#1}}}
 \NewDocumentCommand{\ld}{m O{1}}{\frac{\mathrm d^3#1}{(2\pi)^3}\frac{#2}{2\omega_{\vec #1}}}
 \NewDocumentCommand{\ldsq}{m O{1}}{\frac{\mathrm d^3#1}{(2\pi)^3}\frac{#2}{\sqrt{2\omega_{\vec #1}}}}
 \NewDocumentCommand{\lips}{m O{1}}{\frac{\mathrm d^3#1}{(2\pi)^3}\frac{#2}{2\omega_{\vec #1}}}
 \newcommand{\expr}[1]{式\eqref{#1}}
+\newenvironment{warning}{%
+    \color{red}%          % 设置颜色为红
+    \kaishu%            % 切换为楷体
+    \noindent\textbf{注意：}% % 可选：添加一个加粗的前缀
+}{%
+    \songti%            % 环境结束时切回宋体
+    \par%               % 强制换行，确保格式应用正确
+}
+\newenvironment{notice}{%
+    \kaishu%            % 切换为楷体
+    \noindent\textbf{注：}% % 可选：添加一个加粗的前缀
+}{%
+    \songti%            % 环境结束时切回宋体
+    \par%               % 强制换行，确保格式应用正确
+}

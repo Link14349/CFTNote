@@ -1,0 +1,89 @@
+\section{度规场变换下各量的变换}
+\subsection{无穷小变换下各量的变换}\label{inf-transf}
+考虑无穷小变换
+\begin{align}
+    \tilde{g}_{ab}=g_{ab}+\delta g_{ab}.
+\end{align}
+所有变换后的量$X$都记为$\tilde X$.
+
+我们首先考虑$\delta g_{ab}$与$\delta g^{ab}$的关系. 利用
+\begin{align}
+    \delta^a_{~~b}=g^{ac}g_{cb}=(g^{ac}+\delta g^{ac})(g_{cb}+\delta g_{cb}).
+\end{align}
+我们有
+\begin{align}
+    \delta g^{ac}g_{cb}+\delta g_{bc} g^{ac}=0.
+\end{align}
+
+然后考虑$g$在$g^{ab}\to g^{ab}+\delta g^{ab}$下的变换. 利用线性代数知识我们知道
+\begin{align}
+    g^{\mu\nu}=\frac{A^{\mu\nu}}{g},
+\end{align}
+其中$A^\mu\nu$为$g_{\mu\nu}$的代数余子式. 利用代数余子式我们还可以在特定行展开写出$g$的表达式:
+\begin{align}
+    g=A^{\mu\lambda}g_{\mu\lambda}.
+\end{align}
+其中$\mu$是固定不动的, $\lambda$才遵循Einstein求和约定. 于是我们有
+
+\begin{align}
+    \pa{g}{g_{\mu\nu}}=A^{\mu\nu}=g g^{\mu\nu}.
+\end{align}
+
+于是
+\begin{align}
+    \delta g=g g^{ab}\delta g_{ab}=-g g_{ab}\delta g^{ab}.
+\end{align}
+
+然后我们计算$\delta R_{ab}$. 我们设变换后的与$\tilde g_{ab}$适配的微分算子为$\tilde\nabla$: $\tilde\nabla g_{ab}=0$. 并且设$\nabla$与$\tilde\nabla$间相差一个联络
+\begin{align}
+    \tilde\nabla_a\omega_b=\nabla_a\omega_b-C^{c}_{~~ab}\omega_c.
+\end{align}
+不难计算得到
+\begin{align}
+    C^{d}_{~~ab}&=\frac12\tilde g^{cd}\left(\nabla_b\tilde g_{ac}+\nabla_a\tilde g_{bc}-\nabla_c\tilde g_{ab}\right)\\
+    &=\frac12g^{cd}\left(\nabla_b\delta g_{ac}+\nabla_a\delta g_{bc}-\nabla_c\delta g_{ab}\right).
+\end{align}
+
+根据
+\begin{align}
+    R_{acb}^{~~~~d}\omega_d=2\nabla_{[a}\nabla_{c]}\omega_b\\
+    \tilde R_{acb}^{~~~~d}\omega_d=2\tilde \nabla_{[a}\triangledown\nabla_{c]}\omega_b.
+\end{align}
+做差可得
+\begin{align}
+    \delta R_{acb}^{~~~~d}\omega_d&=2\tilde \nabla_{[a}\triangledown\nabla_{c]}\omega_b-2\nabla_{[a}\nabla_{c]}\omega_b\\
+    &=(-2\nabla_{[a}C^d_{~~c]b}+2C^e_{~~b[a}C^d_{~~c]e})\omega_d.
+\end{align}
+于是
+\begin{align}
+    \delta R_{acb}^{~~~~d}=-2\nabla_{[a}C^d_{~~c]b}+2C^e_{~~b[a}C^d_{~~c]e}.
+\end{align}
+
+由于$C^d_{~~ac}\propto \delta g$, 因此在无穷小变换中, 上式的第二项为高阶无穷小可略去, 于是有
+\begin{align}
+    \delta R_{acb}^{~~~~d}=-2\nabla_{[a}C^d_{~~c]b},
+\end{align}
+从而
+\begin{align}
+    \delta R_{ab}=-2\nabla_{[a}C^d_{~~d]b}=\frac12\nabla^c\nabla_a\delta g_bc+\frac12\nabla^c\nabla_b\delta g_{ac}-\frac12 g^{cd}\nabla_a\nabla_b\delta g_{cd}-\frac12\nabla^c\nabla_c\delta g_{ab}.
+\end{align}
+于是有
+\begin{align}
+    g^{ab}\delta R_{ab}=\left(g_{ab}\nabla^c\nabla_c-\nabla_a\nabla_b\right)\delta g^{ab}=\nabla_a\left(g_{cd}\nabla^a\delta g^{cd}-\nabla_b\delta g^{ab}\right).
+\end{align}
+
+\subsection{有限大局域Weyl变换下各量的变换}\label{finite-weyl-transf}
+考虑$g_{ab}\to\tilde g_{ab}=\Omega(x)^2g_{ab}$的Weyl变换. 类似上节的推导我们有
+\begin{align}
+    C^d_{~~ab}=2\delta^d_{(a}\nabla_{b)}\ln\Omega-g^{cd}g_{ab}\nabla_c\ln\Omega.
+\end{align}
+
+于是计算可得
+\begin{align}
+    g^{ab}\delta R_{ab}=-2(d-1)\nabla^a\nabla_a\ln\Omega-(d-1)(d-2)\nabla^a\ln\Omega\nabla_a\ln\Omega.
+\end{align}
+从而有
+\begin{align}
+    \tilde R&=\Omega^{-2}g^{ab}R_{ab}+\Omega^{-2}g^{ab}\delta R_{ab}\\
+    &=\Omega^{-2}\left(R-2(d-1)\nabla^a\nabla_a\ln\Omega-(d-1)(d-2)\nabla^a\ln\Omega\nabla_a\ln\Omega\right).
+\end{align}

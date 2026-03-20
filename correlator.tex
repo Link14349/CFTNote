@@ -1,0 +1,100 @@
+\section{关联函数}
+在CFT中我们定义关联函数
+\begin{definition}[关联函数]
+    \begin{align}
+        \braket{\phi_1\cdots \phi_n}\equiv \braket{0|\phi_1\cdots\phi_n|0}.
+    \end{align}
+\end{definition}
+
+\subsection{Ward Identity及其应用}
+我们知道
+\begin{align}
+    Q\ket0=0, \bra0Q=0.
+\end{align}
+因此对于一串关联函数我们有
+\begin{align}
+    \braket{0|[Q, \phi_1\cdots\phi_n]|0}=0.
+\end{align}
+将对易子展开我们就有
+\begin{theorem}[Ward Identity]
+    \begin{align}
+        \sum_i \braket{0|\phi_1\cdots[Q, \phi_i]\phi_{i+1}\cdots\phi_n|0}=0.
+    \end{align}
+\end{theorem}
+
+利用Ward等式我们可以尝试计算两点关联函数,
+\begin{align}
+    C(x_1, x_2)\equiv\braket{\phi_1(x_1)\phi_2(x_2)}.
+\end{align}
+其中, $\phi_1, \phi_2$我们认为是两个不同的场, 它们的Dilation变换次数分别为$\Delta_1,\Delta_2$.
+
+我们首先考虑平移对称性, 由于
+\begin{align}
+    C(x_1+a, x_2+a)=\braket{0|\exp{ipa}\phi_1\exp{-ipa}\exp{ipa}\phi_2\exp{-ipa}|0}.
+\end{align}
+由于
+\begin{align}
+    \exp{ipa}\ket 0=\ket0
+\end{align}
+所以
+\begin{align}
+    C(x_1+a, x_2+a)=\braket{0|\phi_1\phi_2|0}=C(x_1,x_2).
+\end{align}
+所以我们得出结论
+\begin{align}
+    C(x_1, x_2)=C(x_1-x_2).
+\end{align}
+
+再考虑旋转对称性, 由于
+\begin{align}
+    C(\Lambda(x_1-x_2))&=\braket{\exp{\frac i2\omega_{\mu\nu}M^{\mu\nu}}\phi_1\exp{-\frac i2\omega_{\mu\nu}M^{\mu\nu}}\exp{\frac i2\omega_{\mu\nu}M^{\mu\nu}}\phi_2\exp{-\frac i2\omega_{\mu\nu}M^{\mu\nu}}}\\
+    &=\braket{0|\phi_1\phi_2|0}=C(x_1-x_2),
+\end{align}
+所以
+\begin{align}
+    C(x_1-x_2)=C(|x_1-x_2|).
+\end{align}
+
+再考虑Dilation, 我们有
+\begin{align}
+    \lambda^{\Delta_1+\Delta_2}C(\lambda|x_1-x_2|)&=\braket{\lambda^{\Delta_1}\phi_1(\lambda x_1)\lambda^{\Delta_2}\phi_2(\lambda x_2)}\\
+    &=\braket{0|\exp{i\lambda D_1}\phi_1(x_1)\exp{-i\lambda D_1}\exp{i\lambda D_2}\phi_2(x_2)\exp{-i\lambda D_2}|0}\\
+    &=\braket{0|\phi_1(x_1)\exp{-i\lambda D_1}\exp{i\lambda D_2}\phi_2(x_2)|0}
+\end{align}
+考虑$\phi_1(x_1)\exp{-i\lambda D_1}\exp{i\lambda D_2}\phi_2(x_2)$, 由于$D_1$是作用在$\phi_1$场上的, 对$\exp{i\lambda D_2}\phi_2(x_2)$这样一个纯的对$\phi_2$场的作用不起作用, 因此
+\begin{align}
+    \phi_1(x_1)\exp{-i\lambda D_1}\exp{i\lambda D_2}\phi_2(x_2)=\phi_1(x_1)\exp{i\lambda D_2}\phi_2(x_2).
+\end{align}
+同理, 
+\begin{align}
+    \phi_1(x_1)\exp{i\lambda D_2}=\phi_1(x_1).
+\end{align}
+于是最终我们得到结果
+\begin{align}
+    \lambda^{\Delta_1+\Delta_2}C(\lambda|x_1-x_2|)&=\braket{\phi_1\phi_2}=C(|x_1-x_2|).
+\end{align}
+这是一个很轻的约束, 直接要求了$C$是一个齐次函数, 并且
+\begin{align}
+    C(|x_1-x_2|)=\frac{C}{|x_1-x_2|^{\Delta_1+\Delta_2}}.
+\end{align}
+
+最后考虑SCT, 我们考虑无穷小变换, 为了简单起见, 我们直接设
+\begin{align}
+    C(|x_1-x_2|)=C(x_2)=\braket{\phi_1(0)\phi_2(x_2)}
+\end{align}, 代入Ward Identity, 我们有
+\begin{align}
+    (2x_{2\mu}x_2\cdot\partial_2-x_2^2\partial_{2\mu}+2\Delta_2x_{2\mu})C(x_2)=0.
+\end{align}
+代入验证我们发现这等价于要求
+\begin{align}
+    (\Delta_1-\Delta_2)C=0.
+\end{align}
+因此, 如果想要一个非平凡的关联函数, 必须要求
+\begin{align}
+    \Delta_1=\Delta_2=\Delta.
+\end{align}
+
+从而有最终的两点关联函数形式
+\begin{align}
+    C(x_1, x_2)=\frac{C}{|x_1-x_2|^{2\Delta}}.
+\end{align}

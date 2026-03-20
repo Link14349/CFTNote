@@ -229,61 +229,6 @@ Einstien引力场方程
 
 定理\ref{ct-3pt}告诉我们, 在CFT中计算关联函数时, 三点及以下的关联函数都是与点的位置关系没有任何关系的: 我们可以用共性变换将之变成任何形状!
 
-\subsection{共形代数(Conformal Algebra)}
-为了能够计算得到共形代数生成元之间的对易关系, 很自然的想法是我们寻找一个忠实表示, 在这个表示中计算对易子从而得到对易关系. 因此我们选取其对标量场的作用作为表示来考虑, 即我们有映射$G\to(\mathcal F\to\mathcal F)$: 设$g\in G, g=\exp{-i\omega_a K_a}$
-\begin{align}
-    g\to\phi_g, \phi_gf|_{p}\equiv \phi_{*t=1}f|_p.
-\end{align}
-其中, $\phi$对应的光滑矢量场即$\omega_a K_a$.
-
-于是有
-\begin{align}
-    (1-i\epsilon a^\mu p_\mu-\frac i2\epsilon\omega^{\mu\nu}M_{\mu\nu}-i\epsilon\lambda D-i\epsilon b^\mu K_\mu)f(x^\mu)=f(x-\epsilon\xi^\mu).
-\end{align}
-所以可以计算得
-\begin{align}
-    & p_\mu=-i\partial_\mu, \\
-    & M_{\mu\nu}=i(x_\mu\partial_\nu-x_\nu\partial_\mu), \\
-    & D=-ix^\mu\partial_\mu, \\
-    & K_\mu=i(x^2\partial_\mu-2x_\mu x^\nu\partial_\nu).
-\end{align}
-
-然后我们可以计算对易子
-\begin{align}
-    & [M^{\mu\nu}, M^{\rho\sigma}]=i(-g^{\mu\rho}M^{\nu\sigma}-g^{\sigma\nu}M^{\mu\rho}+g^{\mu\sigma}M^{\nu\rho}+g^{\rho\nu}M^{\mu\sigma}),\\
-    & [M_{\mu\nu}, p_\rho]=-i(g_{\mu\rho}p_\nu-g_{\rho\nu}p_\mu),\\
-    & [M_{\mu\nu}, K_\rho]=-i(g_{\mu\rho}K_\nu-g_{\rho\nu}K_\mu),\\
-    & [D, p_\mu]=ip_\mu,\\
-    & [D, K_\mu]=-iK_\mu,\\
-    & [p_\mu, K_\nu]=-2i(M_{\mu\nu}+g_{\mu\nu}D),
-\end{align}
-这就是共形代数.
-
-\begin{theorem}
-    对于旋转对称群$\cong SO(m, n)$的流形, 其共形变换对称群$\cong SO(m+1, n+1)$.
-\end{theorem}
-
-\begin{proof}
-    原本度规为$g_{\mu\nu}$, 设一个新的$m+n+2$维的度规
-    \begin{align}
-        \bar g_{MN}=g_{\mu\nu}\dx^\mu\dx^\nu+\dx^M\dx^M-\dx^N\dx^N,
-    \end{align}
-    其旋转对称群的Lie代数对易满足
-    \begin{align}
-        [L^{\mu\nu}, L^{\rho\sigma}]=i(-g^{\mu\rho}L^{\nu\sigma}-g^{\sigma\nu}L^{\mu\rho}+g^{\mu\sigma}L^{\nu\rho}+g^{\rho\nu}L^{\mu\sigma}).
-    \end{align}
-    如果令
-    \begin{align}
-        \begin{cases}
-            D=L_{MN}=-L^{MN},\\
-            p^\mu=L^{M\mu}+L^{N\mu},\\
-            K^\mu=L^{M\mu}-L^{N\mu},\\
-            M^{\mu\nu}=L^{\mu\nu}.
-        \end{cases}
-    \end{align}
-    则可以使其满足全部的共形代数对易关系!
-\end{proof}
-
 \subsection{经典场的共形变换}
 比较自洽清楚地考虑经典场共形变换的方式是直接在一个一般的流形上面考虑Weyl变换, 将物质与引力场的耦合考虑进去.
 \begin{align}
@@ -383,6 +328,64 @@ Weyl变换并不改变坐标, 因此$\d^dx$不变, $\partial_a\phi=d\phi_a$, 微
 
 代入$T_{ab}$具体形式, 我们不难发现求出来的能动张量确实是无迹的. 从此我们认为能动张量无迹是一默认成立的假设.
 
+\subsection{共形代数(Conformal Algebra)}
+为了能够计算得到共形代数生成元之间的对易关系, 很自然的想法是我们寻找一个忠实表示, 在这个表示中计算对易子从而得到对易关系. 因此我们选取其对标量场的作用作为表示来考虑, 即我们有映射$G\to(\mathcal F\to\mathcal F)$: 设$g\in G, g=\exp{-i\omega_a K_a}$
+\begin{align}
+    g\to\phi_g, \phi_gf|_{p}\equiv \mathcal F\phi_{*t=1}f|_p.
+\end{align}
+其中, $\phi$对应的光滑矢量场即$\omega_a K_a$, $\mathcal F$代表场的变换缩放.
+
+于是有
+\begin{align}
+    (1-i\epsilon a^\mu p_\mu-\frac i2\epsilon\omega^{\mu\nu}M_{\mu\nu}-i\epsilon\lambda D-i\epsilon b^\mu K_\mu)f(x^\mu)=\mathcal Ff(x-\epsilon\xi^\mu).
+\end{align}
+所以可以计算得
+\begin{align}
+    & p_\mu=-i\partial_\mu, \\
+    & M_{\mu\nu}=i(x_\mu\partial_\nu-x_\nu\partial_\mu)+S_{\mu\nu}, \\
+    & D=-i(x^\mu\partial_\mu+\Delta), \\
+    & K_\mu=-i(2x_\mu x^\nu\partial_\nu-x^2\partial_\mu-2\Delta x_\mu)+2x^\nu S_{\mu\nu}.
+\end{align}
+注意, 其中$S_{\mu\nu}$为自旋矩阵, 对于标量场来说其为$0$, 但是为了结论具有普适性, 我们希望其对于有自旋的粒子也成立, 因此我们添加了这项.
+
+然后我们可以计算对易子
+\begin{theorem}\label{basic-commutators}
+    \begin{align}
+        & [M^{\mu\nu}, M^{\rho\sigma}]=i(-g^{\mu\rho}M^{\nu\sigma}-g^{\sigma\nu}M^{\mu\rho}+g^{\mu\sigma}M^{\nu\rho}+g^{\rho\nu}M^{\mu\sigma}),\\
+        & [M_{\mu\nu}, p_\rho]=-i(g_{\mu\rho}p_\nu-g_{\rho\nu}p_\mu),\\
+        & [M_{\mu\nu}, K_\rho]=-i(g_{\mu\rho}K_\nu-g_{\rho\nu}K_\mu),\\
+        & [D, p_\mu]=ip_\mu,\\
+        & [D, K_\mu]=-iK_\mu,\\
+        & [p_\mu, K_\nu]=-2i(M_{\mu\nu}+g_{\mu\nu}D).
+    \end{align}
+\end{theorem}
+这就是共形代数.
+
+\begin{theorem}
+    对于旋转对称群$\cong SO(m, n)$的流形, 其共形变换对称群$\cong SO(m+1, n+1)$.
+\end{theorem}
+
+\begin{proof}
+    原本度规为$g_{\mu\nu}$, 设一个新的$m+n+2$维的度规
+    \begin{align}
+        \bar g_{MN}=g_{\mu\nu}\dx^\mu\dx^\nu+\dx^M\dx^M-\dx^N\dx^N,
+    \end{align}
+    其旋转对称群的Lie代数对易满足
+    \begin{align}
+        [L^{\mu\nu}, L^{\rho\sigma}]=i(-g^{\mu\rho}L^{\nu\sigma}-g^{\sigma\nu}L^{\mu\rho}+g^{\mu\sigma}L^{\nu\rho}+g^{\rho\nu}L^{\mu\sigma}).
+    \end{align}
+    如果令
+    \begin{align}
+        \begin{cases}
+            D=L_{MN}=-L^{MN},\\
+            p^\mu=L^{M\mu}+L^{N\mu},\\
+            K^\mu=L^{M\mu}-L^{N\mu},\\
+            M^{\mu\nu}=L^{\mu\nu}.
+        \end{cases}
+    \end{align}
+    则可以使其满足全部的共形代数对易关系!
+\end{proof}
+
 \subsection{共形量子场}
 进入量子场, 我们的首要任务是非微扰地定义一个共形量子场. 于是我们可以从如下几点考虑定义
 \begin{enumerate}
@@ -398,33 +401,80 @@ Weyl变换并不改变坐标, 因此$\d^dx$不变, $\partial_a\phi=d\phi_a$, 微
 
 接下来我们就围绕这几点定义进行进一步讨论. 首先对于第三点, 我们可以更进一步地定义共形变换对场算符的变换. 对于某个共形变换荷$G$, 以及参数$\omega$, 我们定义其对场算符的共形变换为
 \begin{align}
-    \phi(x)\to \Lambda_G\phi=\exp{-iG\omega}\phi(x)\exp{iG\omega}.
+    \phi(x)\to \Lambda_G\phi=\exp{iG\omega}\phi(x)\exp{-iG\omega}.
 \end{align}
 而$\Lambda_G\phi$这个则是直接利用经典场的变换得出的.
 
-\begin{warning}
-    这里和QM教科书上的定义$\exp{iG\omega}\phi(x)\exp{-iG\omega}$是相反的! 请注意! 当然, 这里之所以需要相反是很容易理解的, 因为我们一开始定义共形变换的时候就是对时空坐标沿着Killing矢量移动的, 而不是让场沿着矢量方向移动, 场的移动方向本来就是反的, 现在倒过来定义无非就是把它给正回来了, 这样子定义出来的荷才是就对应场本身的变换生成元.
-\end{warning}
+% \begin{warning}
+%     这里和QM教科书上的定义$\exp{iG\omega}\phi(x)\exp{-iG\omega}$是相反的! 请注意! 当然, 这里之所以需要相反是很容易理解的, 因为我们一开始定义共形变换的时候就是对时空坐标沿着Killing矢量移动的, 而不是让场沿着矢量方向移动, 场的移动方向本来就是反的, 现在倒过来定义无非就是把它给正回来了, 这样子定义出来的荷才是就对应场本身的变换生成元.
+% \end{warning}
 
 根据平移生成元的定义, 我们有
 \begin{align}
-    \exp{-ip\cdot y}\phi(x)\exp{ip\cdot y}=\phi(x+y).
+    \exp{ip\cdot y}\phi(x)\exp{-ip\cdot y}=\phi(x+y).
 \end{align}
+\begin{warning}
+    这里指数上的正负号非常subtle, 我们可能会疑惑为什么是到$\phi(x+y)$而不是$\phi(x-y)$, 不是说平移是将$\phi(x-y)$处的场移动到$\phi(x)$吗? 原因在于这里变换是将整个场算符$\phi(x)$平移, 而不是将场量平移, 因此是场算符整体就变换为了$x+y$处的场算符.
+\end{warning}
 对于无穷小变换$y\to0$, 我们可以得到对易子
 \begin{align}
-    -i[p_\mu, \phi]=\partial_\mu\phi.
+    i[p_\mu, \phi]=\partial_\mu\phi.
 \end{align} 
 于是
 \begin{align}
-    [p_\mu, \phi]=i\partial_\mu\phi.
+    [p_\mu, \phi(x)]=-i\partial_\mu\phi(x).
 \end{align}
-类似地, 利用
+
+类似地, 对于任意自旋的场, 设其自旋算符为$S_{\mu\nu}$, 则利用
 \begin{align}
-    \exp{-\frac i2\omega^{\mu\nu}M_{\mu\nu}}\phi(x)\exp{\frac i2\omega^{\mu\nu}M_{\mu\nu}}=\phi(\Lambda^\mu_{~~\nu}x^\nu), 
+    \exp{\frac i2\omega^{\mu\nu}M_{\mu\nu}}\phi(x)\exp{-\frac i2\omega^{\mu\nu}M_{\mu\nu}}=\exp{\frac i2\omega^{\mu\nu}S_{\mu\nu}}\phi(\Lambda^\mu_{~~\nu}x^\nu), 
 \end{align}
 我们有
 \begin{align}
-    [M_{\mu\nu}, \phi]=-i(x_\mu\partial_\nu-x_\nu\partial_\mu)\phi(x)
+    [M_{\mu\nu}, \phi(x)]=i(x_\mu\partial_\nu-x_\nu\partial_\mu)\phi(x)+S_{\mu\nu}\phi(x).
 \end{align}
 
-然后我们考虑$D$, Dilation的变换会比较麻烦一些, 因为它同时包含移动与缩放. 比较简单的方式是利用Dilation与SCT不改变原点位置的特性, 首先计算$\phi(0)$与$D, K_\mu$的对易子.
+然后我们考虑$D, K_\mu$, 它们的变换会比较麻烦一些, 因为同时包含移动与缩放. 比较简单的方式是利用Dilation与SCT不改变原点位置的特性, 首先计算$\phi(0)$与$D, K_\mu$的对易子.
+
+对于Dilation, $\sigma=\frac1d\partial_\mu\xi^\mu=\lambda$, $\phi(0)$的缩放为$\phi(0)\to\Omega^{-\Delta}\phi=\exp{\Delta\sigma}\phi$, 因此
+\begin{align}
+    \exp{i\lambda D}\phi(0)\exp{-i\lambda D}=\exp{\Delta\lambda}\phi(0),
+\end{align}
+于是有对易子
+\begin{align}
+    [D, \phi(0)]=-i\Delta\phi(0).
+\end{align}
+
+对于SCT, $\sigma(0)=\frac1d\partial_\mu\xi^\mu=0$, 因此
+\begin{align}
+    \exp{iK_\mu B^\mu}\phi(0)\exp{-iK_\mu B^\mu}=\phi(0),
+\end{align}
+于是
+\begin{align}
+    [K_\mu, \phi(0)]=0.
+\end{align}
+这样的$\phi(0)$称为主算符(Primary Operator).
+
+对于$D, K_\mu$与$\phi(x)$处的对易子可以使用$\phi(x)=\exp{-ipx}\phi(0)\exp{ipx}$间接计算:
+\begin{align}
+    [D, \exp{ipx}\phi(0)\exp{-ipx}]&=\exp{ipx}[\exp{-ipx}D\exp{ipx}, \phi(0)]\exp{-ipx}.
+\end{align}
+而
+\begin{align}
+    \exp{-ipx}D\exp{ipx}&=D+[-ipx, D]+\frac1{2!}[-ipx, [-ipx, D]]+\cdots\\
+    &=D-px
+\end{align}
+于是
+\begin{align}
+    [D, \phi(x)]&=-i(x\cdot\partial+\Delta)\phi(x).
+\end{align}
+类似地,
+\begin{align}
+    \exp{-ipx}K_\mu\exp{ipx}&=K_\mu+2(M_{\mu\nu}x^\nu-x_\mu D)+(2x_\mu x^\nu p_\nu-x^2 p_\mu),
+\end{align}
+从而有
+\begin{align}
+    [K_\mu, \phi(x)]&=-i(2x_\mu x^\nu\partial_\nu-x^2\partial_\mu-2\Delta x_\mu)\phi(x)+2S_{\mu\nu}x^\nu\phi(x).
+\end{align}
+
+可以发现, 这些结论与经典场的结果是一致的.
